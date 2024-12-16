@@ -1,0 +1,39 @@
+﻿@model IEnumerable<InternshipTask.Models.StudentView>
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-action="Create" class="btn btn-primary">Add New Student Info</a>
+
+<table class="mt-3 table table-striped table-hover">
+	<thead class="table-primary">
+		<tr>
+			<th>Name</th>
+			<th>Class</th>
+			<th>DOB</th>
+			<th>Gender</th>
+			<th>Actions</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.StudentName</td>
+			    <td>@item.ClassName</td> 
+				<td>@item.DOB.ToString("yyyy-MM-dd")</td>
+				<td>@(item.Gender == 1 ? "Male" : "Female")</td>
+				<td>
+
+
+					<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+					<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+					<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+
+				</td>
+			</tr>
+		}
+	</tbody>
+
+</table>

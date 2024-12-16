@@ -1,0 +1,68 @@
+﻿@model InternshipTask.Models.StudentView
+@{
+    ViewData["Title"] = "Add New Student Info";
+}
+
+<div class="container mt-5">
+    <!-- Form Card -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-book-fill"></i> Add New Student Info
+                    </h4>
+                </div>
+
+                <!-- Card Body with Form -->
+                <div class="card-body">
+                    <form asp-action="Create" asp-controller="Student" method="post" class="needs-validation" novalidate>
+                       
+                        <!-- Validation Summary -->
+                        <div asp-validation-summary="All" class="alert alert-danger d-none"></div>
+
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label asp-for="StudentName" class="form-label"></label>
+                            <input asp-for="StudentName" class="form-control" placeholder="Enter student name" autofocus />
+                            <span asp-validation-for="StudentName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Gender Field -->
+                        <div class="mb-3">
+                            <label asp-for="Gender">Gender</label><br />
+                            <input asp-for="Gender" type="radio" value="1" /> Male
+                            <input asp-for="Gender" type="radio" value="2" /> Female
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+                        <!-- DOB Field -->
+                        <div class="mb-3">
+                            <label asp-for="DOB"></label>
+                            <input asp-for="DOB" class="form-control" type="date" />
+                            <span asp-validation-for="DOB" class="text-danger"></span>
+                        </div>
+
+                        <!-- Class Name Field -->
+                        <div class="mb-4">
+                            <label asp-for="ClassId">Class Name</label>
+                            <select asp-for="ClassId" class="form-control" asp-items="Model.ClassList"></select>
+                            <span asp-validation-for="ClassId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Form Buttons -->
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary me-2">
+                                <i class="bi bi-plus-circle"></i> Add
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
